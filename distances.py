@@ -13,8 +13,7 @@ import geopy.distance
 clues = pd.read_csv('data/clues_junio_2020.csv', encoding = 'utf-8-sig')
 localities = pd.read_csv('data/localidades_mayo_2020.csv', index = False, encoding = 'utf-8-sig')
 
-geo_distance = np.zeros((localities[0:9].shape[0], clues.shape[0]))
-#geo_distance = np.zeros((localities[0:9].shape[0], clues[0:9].shape[0]))
+geo_distance = np.zeros((localities.shape[0], clues.shape[0]))
 
 index_l = 0
 index_c = 0
@@ -27,16 +26,9 @@ for locality in localities.iterrows():
     index_l += 1
     index_c = 0
     
-#geodis_centroids.tofile('distancia_centroides.txt')
-#data_area_pob['nombre_municipio_federal']
 df = pd.DataFrame(geo_distance, index=localities['mapa'], columns=clues['clues'])
 df.to_csv('distance_localities_hospitals.csv', index=True, header=True, sep=',', encoding = 'utf-8-sig')
 
-
-#    np.savetxt('distancia_centroides.out', geodis_centroids, delimiter=',')
-
-#tetha = 0.5
-#efdis_centroids = np.zeros((geodis_centroids.shape[0], geodis_centroids.shape[0]))
 t_vector = [ round(x * 0.1, 1) for x in range(0, 10)]
 
 for tetha in t_vector:
