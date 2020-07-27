@@ -10,11 +10,13 @@ import pandas as pd
 import numpy as np
 import geopy.distance
 
+print("Reading hospitals and localities ...")
 clues = pd.read_csv('data/clues_junio_2020.csv', encoding = 'utf-8-sig')
 localities = pd.read_csv('data/localidades_mayo_2020.csv', index = False, encoding = 'utf-8-sig')
 
 geo_distance = np.zeros((localities.shape[0], clues.shape[0]))
 
+print("Calculating geographic distance between them ...")
 index_l = 0
 index_c = 0
 for locality in localities.iterrows():
@@ -31,6 +33,7 @@ df.to_csv('distance_localities_hospitals.csv', index=True, header=True, sep=',',
 
 t_vector = [ round(x * 0.1, 1) for x in range(0, 10)]
 
+print("Calculating effective distance between them")
 for tetha in t_vector:
     effective_distance = np.zeros((localities.shape[0], clues.shape[0]))
     for locality in range(0,geo_distance.shape[0], 1):
