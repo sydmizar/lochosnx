@@ -12,7 +12,7 @@ import geopy.distance
 
 print("Reading hospitals and localities ...")
 clues = pd.read_csv('data/clues_junio_2020.csv', encoding = 'utf-8-sig')
-localities = pd.read_csv('data/localidades_mayo_2020.csv', index = False, encoding = 'utf-8-sig')
+localities = pd.read_csv('data/localidades_mayo_2020.csv', encoding = 'utf-8-sig')
 
 geo_distance = np.zeros((localities.shape[0], clues.shape[0]))
 
