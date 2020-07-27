@@ -20,10 +20,10 @@ print("Calculating geographic distance between them ...")
 index_l = 0
 index_c = 0
 for locality in localities.iterrows():
-    print(locality['mapa'])
+    print(locality)
     coords_1 = (locality[1]['latitud'], locality[1]['longitud'])
     for clue in clues.iterrows():
-        print(clue['clues'])
+        print(clue)
         coords_2 = (clue[1]['latitud'], clue[1]['longitud'])
         geo_distance[index_l][index_c] = geopy.distance.geodesic(coords_1, coords_2).km
         index_c += 1
